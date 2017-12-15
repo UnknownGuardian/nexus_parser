@@ -80,10 +80,8 @@ function parseBlocks (arr) {
       if (isCommand(line)) {
         let command = parseCommand(line)
         block.commands[command.name] = command
-        console.log('--->Is Command', command)
       }
     }
-    console.log('XXXXXXXX', block.commands)
     if (block.commands.translate && block.commands.tree) {
       return updateNewickWithTranslation(block.commands.translate.data, block.commands.tree.data)
     }
@@ -96,7 +94,6 @@ function updateNewickWithTranslation (translate, tree) {
     let fullName = translate[key]
     return fullName + ':'
   })
-  console.log('ZZZZZZZZZz', tree)
   return parseNewick(tree)
 }
 function isCommand (str) {
